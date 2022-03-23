@@ -4,7 +4,7 @@ pipeline {
         registry = "docker.io/fajarsujai/bpfe"
         serviceName = "frontend-bp"
         dockerImage = ''
-        branchname = "main"
+        branchname = "staging"
     }
     stages {
         stage("Clone Code") {
@@ -54,8 +54,8 @@ pipeline {
                 script {
                         sh "sed -i 's/bpfe:latest/bpfe:$env.VERSION/g' deployment-fe.yaml"
                         sh "kubectl apply -f deployment-fe.yaml"
-                        sh "kubectl rollout status deployment frontend-bp"
-                        sh "kubectl get pods | grep frontend-bp"
+                        sh "kubectl rollout status deployment -n stagig frontend-bp"
+                        sh "kubectl get pods -n staging | grep frontend-bp"
                 }
             }
         }
