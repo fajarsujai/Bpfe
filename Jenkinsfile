@@ -54,7 +54,7 @@ pipeline {
                 script {
                         sh "sed -i 's/bpfe:latest/bpfe:$env.VERSION/g' deployment-fe.yaml"
                         sh "kubectl apply -f deployment-fe.yaml"
-                        sh "kubectl rollout status deployment -n stagig frontend-bp"
+                        sh "kubectl rollout status deployment -n staging frontend-bp"
                         sh "kubectl get pods -n staging | grep frontend-bp"
                 }
             }
