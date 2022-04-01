@@ -27,7 +27,7 @@ spec:
         image: fajarsujai/bpfe:latest
         env:
           - name: REACT_APP_BASE_URL
-            value: "https://fe-prod.fajarsujai.my.id"
+            value: "https://be-prod.fajarsujai.my.id"
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
