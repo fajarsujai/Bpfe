@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: frontend-bp
-        image: fajarsujai/bpfe:5-main-08a7128
+        image: fajarsujai/bpfe:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
