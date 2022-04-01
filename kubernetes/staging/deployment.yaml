@@ -25,6 +25,9 @@ spec:
       containers:
       - name: frontend-bp
         image: fajarsujai/bpfe:latest
+        env:
+          - name: REACT_APP_BASE_URL
+            value: "https://fe-prod.fajarsujai.my.id"
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
@@ -40,7 +43,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-bp-service
+  name: frontend-bp-service-staging
   namespace: staging
 spec:
   type: NodePort

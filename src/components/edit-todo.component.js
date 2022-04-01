@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+require('dotenv').config();
+const baseURL = process.env.REACT_APP_BASE_URL
 
 export default class EditTodo extends Component {
 
@@ -22,7 +24,7 @@ export default class EditTodo extends Component {
 
     componentDidMount() {
         // axios.get('http://localhost:4000/todos/'+this.props.match.params.id)
-        axios.get('https://be-prod.fajarsujai.my.id/todos/'+this.props.match.params.id)        
+        axios.get(`${baseURL}/todos/`+this.props.match.params.id)        
             .then(response => {
                 this.setState({
                     todo_description: response.data.todo_description,
@@ -69,7 +71,7 @@ export default class EditTodo extends Component {
             todo_completed: this.state.todo_completed
         };
         console.log(obj);
-        axios.post('https://be-prod.fajarsujai.my.id/todos/update/'+this.props.match.params.id, obj)
+        axios.post(`${baseURL}/todos/update/`+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
         
         this.props.history.push('/');

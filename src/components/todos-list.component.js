@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+require('dotenv').config();
+const baseURL = process.env.REACT_APP_BASE_URL
 
 const Todo = props => (
     <tr>
@@ -21,7 +23,7 @@ export default class TodosList extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://be-prod.fajarsujai.my.id/todos/')
+        axios.get(`${baseURL}/todos/`)
             .then(response => {
                 this.setState({ todos: response.data });
             })

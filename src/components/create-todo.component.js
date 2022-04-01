@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+require('dotenv').config();
+const baseURL = process.env.REACT_APP_BASE_URL
 export default class CreateTodo extends Component {
 
     constructor(props) {
@@ -51,7 +53,7 @@ export default class CreateTodo extends Component {
             todo_completed: this.state.todo_completed
         };
 
-        axios.post('https://be-prod.fajarsujai.my.id/todos/add', newTodo)
+        axios.post(`${baseURL}/todos/add`, newTodo)
             .then(res => console.log(res.data));
 
         this.setState({
